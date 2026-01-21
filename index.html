@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2027 Wedding Master Plan</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #e74c3c;
+            --bg-color: #f5f7fa;
+            --card-bg: #ffffff;
+            --text-color: #333;
+            --border-radius: 12px;
+        }
+
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .app-container {
+            width: 100%;
+            max-width: 600px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            box-sizing: border-box;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            margin: 0 0 10px 0;
+        }
+
+        .progress-bar-container {
+            width: 100%;
+            height: 6px;
+            background-color: #e0e0e0;
+            border-radius: 3px;
+            overflow: hidden;
+            margin-bottom: 5px;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background-color: var(--primary-color);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .page-indicator {
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        .slide-card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+
+        .slide-title {
+            font-size: 1.4rem;
+            color: var(--primary-color);
+            margin: 0;
+        }
+
+        .slide-subtitle {
+            font-size: 1rem;
+            color: #7f8c8d;
+            margin-top: 5px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eee;
+        }
+
+        .content-area {
+            flex: 1;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Content Styles */
+        ul { padding-left: 20px; margin: 0; }
+        li { margin-bottom: 8px; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+            margin-top: 10px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th { background-color: #f8f9fa; }
+
+        .card-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .info-box {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary-color);
+        }
+        .info-box h4 { margin: 0 0 5px 0; font-size: 1rem; }
+        .info-box p { margin: 0; font-size: 0.9rem; color: #555; }
+        .price-tag {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            font-size: 0.75rem;
+            padding: 2px 6px;
+            border-radius: 4px;
+            margin-top: 5px;
+        }
+
+        .comparison-container {
+            display: flex;
+            background: #f1f2f6;
+            border-radius: 8px;
+            padding: 10px;
+            font-size: 0.85rem;
+            gap: 10px;
+        }
+        .comp-col { flex: 1; }
+        .comp-col h4 { color: var(--primary-color); margin: 0 0 5px 0; font-size: 0.9rem; }
+        .comp-col ul { padding-left: 15px; }
+        .divider { width: 1px; background: #ccc; }
+
+        .note {
+            margin-top: 15px;
+            font-size: 0.85rem;
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        /* Checkbox Section */
+        .check-section {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px dashed #ddd;
+            text-align: center;
+        }
+
+        .check-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 24px;
+            border-radius: 30px;
+            background-color: #f0f0f0;
+            cursor: pointer;
+            transition: all 0.2s;
+            user-select: none;
+        }
+
+        .check-btn.checked {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+            border: 1px solid #2e7d32;
+            font-weight: bold;
+        }
+
+        .check-btn input { display: none; }
+
+        footer {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            background-color: #e0e0e0;
+            color: #333;
+        }
+
+        button.primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        @media (max-width: 400px) {
+            .comparison-container { flex-direction: column; }
+            .divider { width: 100%; height: 1px; margin: 10px 0; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="app-container">
+    <header>
+        <h1>2027 Wedding Master Plan</h1>
+        <div class="progress-bar-container">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+        <div class="page-indicator" id="pageIndicator"></div>
+    </header>
+
+    <main class="slide-card">
+        <h2 class="slide-title" id="slideTitle"></h2>
+        <h3 class="slide-subtitle" id="slideSubtitle"></h3>
+        
+        <div id="contentArea" class="content-area">
+            </div>
+
+        <div class="check-section">
+            <label class="check-btn" id="checkBtnLabel">
+                <input type="checkbox" id="slideCheckbox">
+                <span id="checkText">? 위 내용을 확인하였습니다</span>
+            </label>
+        </div>
+    </main>
+
+    <footer>
+        <button id="prevBtn" onclick="changeSlide(-1)">이전</button>
+        <button id="nextBtn" class="primary" onclick="changeSlide(1)">다음</button>
+    </footer>
+</div>
+
+<script>
+    // --- DATA ---
+    const slides = [
+        {
+            title: "Executive Summary",
+            subtitle: "전체 요약",
+            type: "list",
+            content: [
+                { label: "결혼", text: "'27년 2월 예식 / 광주 합리적 웨딩 / 유럽 허니문 (잔여 축의금은 아내 가게 자금)" },
+                { label: "주거", text: "'27년 1월 입주 / 에너지밸리 풍경채 / 입주청소 및 반려견 코팅 필수" },
+                { label: "재정", text: "출산 전후 '이원화 관리' (출산 후 생활비 및 보험료 지원 개시)" },
+                { label: "자산", text: "40대 10억 → 60대 50억 달성 (비정기 수입 전액 재투자 원칙)" },
+                { label: "생활", text: "상호 존중 (가사 분담, 종교 자유, 아내의 시골 방문 일정 존중)" }
+            ]
+        },
+        {
+            title: "Timeline",
+            subtitle: "전체 일정 ('26.02 ~ '27.02)",
+            type: "table",
+            headers: ["시기", "구분", "진행 사항"],
+            content: [
+                ["'26.02", "일정 확정", "길일 택일 (양가 인사 생략), 즉시 예식장 예약"],
+                ["'26.03", "장소 예약", "광주 합리적 예식장 계약 (보증인원 협의)"],
+                ["'26.04", "촬영 예약", "스드메(토탈샵) 및 본식 스냅 계약"],
+                ["'26.10", "예물 투어", "일본 여행 겸 결혼반지(불가리) 수령"],
+                ["'26.11", "퇴거 통보", "세입자 만기 퇴거 통보 (내용증명)"],
+                ["'27.01", "입주/혼수", "필수 시공(코팅, 청소) 및 입주 완료"],
+                ["'27.02", "본식/여행", "결혼식 및 유럽(이탈리아) 신혼여행"]
+            ]
+        },
+        {
+            title: "Wedding Venue",
+            subtitle: "예식장 선정 (광주 합리적 베뉴 Best 3)",
+            type: "cards",
+            note: "※ 예식 비용 정산 후 남는 축의금은 전액 아내의 가게 자금으로 활용",
+            content: [
+                { title: "1. 어반브룩 (남구)", desc: "프라이빗/야외. 식사 만족도 최상.", cost: "약 1,100만" },
+                { title: "2. 시크릿가든 (광산구)", desc: "하우스/파티 분위기. 사진 연출 우수.", cost: "약 900만" },
+                { title: "3. 제이아트 (서구)", desc: "높은 층고, 넓은 주차장. 접근성 우수.", cost: "약 850만" }
+            ]
+        },
+        {
+            title: "S.D.M Strategy",
+            subtitle: "촬영/의상 (토탈샵 전략)",
+            type: "cards",
+            content: [
+                { title: "1. 마이든", desc: "심플/인물 중심. 깨끗하고 맑은 느낌. 가성비 1순위.", cost: "약 380만" },
+                { title: "2. 줄리엣발코니", desc: "그리너리/자연광. 화사하고 따뜻한 색감. 야외 느낌.", cost: "약 340만" },
+                { title: "3. 원규", desc: "다양한 배경(한옥/앤틱). 화보형. 표정 연기 보완.", cost: "약 410만" }
+            ]
+        },
+        {
+            title: "Housing & Living",
+            subtitle: "신혼집 시공 및 혼수 (총 약 980만 원)",
+            type: "list",
+            content: [
+                { label: "필수 시공", text: "마루 코팅(반려견 미끄럼방지 100만), 입주 청소(70만), 부분 도배(60만)" },
+                { label: "혼수 (New)", text: "냉장고 (삼성 비스포크 / LG 오브제 키친핏) - 250만" },
+                { label: "혼수 (Used)", text: "TV(85인치), 세탁타워, 식탁 등 S급 중고 활용 - 500만" }
+            ]
+        },
+        {
+            title: "Financial Plan",
+            subtitle: "자녀 계획 및 시기별 재정 운용",
+            type: "comparison",
+            leftTitle: "Phase 1: 신혼 ~ 출산 전",
+            leftData: ["주거/식비: 남편 전액 부담", "생활비: 각자 해결 (지원 없음)", "보험료: 각자 납부"],
+            rightTitle: "Phase 2: 출산 후 ~ 육아기",
+            rightData: ["주거/식비: 남편 전액 부담 (유지)", "생활비: 월 100~200만 원 지원", "보험료: 아내 보험료 남편이 납부"],
+            note: "공통 원칙: 성과급 등 비정기 수입은 전액 투자 적립 (사용 시 원금 복구)"
+        },
+        {
+            title: "Life Rules",
+            subtitle: "부부 생활 수칙",
+            type: "list",
+            content: [
+                { label: "가사 분담", text: "구역 관리제 (청소/빨래), 식사는 집밥 원칙 (외식/배달 제한)" },
+                { label: "가족 행사", text: "명절 양가 인사만 드리고 귀가 (숙박 없음). 양가 지원 동일 원칙." },
+                { label: "개인 생활", text: "종교 강요 금지. 일요일 아내의 시골 방문 존중 (출산 후엔 자녀 동반)." }
+            ]
+        },
+        {
+            title: "Wealth Roadmap",
+            subtitle: "자산 증식 (은퇴 시 순자산 50억 목표)",
+            type: "list",
+            content: [
+                { label: "투자 원칙", text: "비정기 수입 전액 적립. 인출 시 생활비 차감하여 원금 복구 의무." },
+                { label: "40대 (10억)", text: "종잣돈 마련 + 거주 아파트 매도 후 상급지 이동" },
+                { label: "50대 (30억)", text: "부동산 가치 상승 + 투자 소득 복리 효과" },
+                { label: "60대 (50억)", text: "자산 포트폴리오 다각화 및 은퇴 (대형 애견카페 창업)" }
+            ]
+        },
+        {
+            title: "Special Plan",
+            subtitle: "예물 및 허니문",
+            type: "list",
+            content: [
+                { label: "예물 (불가리)", text: "'26년 10월 일본 여행 시 구매 (엔저/면세 혜택 활용)" },
+                { label: "허니문 (이탈리아)", text: "6박 7일 로마 & 피렌체 코스" },
+                { label: "쇼핑 포인트", text: "피렌체 토르나부오니 거리 (루이비통, 에르메스 등)" }
+            ]
+        },
+        {
+            title: "Final Budget",
+            subtitle: "최종 예상 예산안 (약 3,600만 원)",
+            type: "table",
+            headers: ["구분", "항목", "비용"],
+            content: [
+                ["예식장", "어반브룩 등", "900만"],
+                ["스드메", "마이든 등", "350만"],
+                ["예물", "불가리(일본)", "400만"],
+                ["신혼여행", "유럽(이탈리아)", "800만"],
+                ["혼수", "New+Used", "750만"],
+                ["예비비", "시공/예복/잡비", "400만"]
+            ]
+        }
+    ];
+
+    // --- LOGIC ---
+    let currentSlide = 0;
+    let checkedState = new Array(slides.length).fill(false);
+
+    // Initialize
+    window.onload = function() {
+        const savedChecks = localStorage.getItem("weddingChecklist_v2");
+        if (savedChecks) {
+            checkedState = JSON.parse(savedChecks);
+        }
+        renderSlide();
+    };
+
+    function renderSlide() {
+        const slide = slides[currentSlide];
+        
+        // Update Header Info
+        document.getElementById("progressBar").style.width = `${((currentSlide + 1) / slides.length) * 100}%`;
+        document.getElementById("pageIndicator").innerText = `${currentSlide + 1} / ${slides.length}`;
+        
+        // Update Title
+        document.getElementById("slideTitle").innerText = slide.title;
+        document.getElementById("slideSubtitle").innerText = slide.subtitle;
+
+        // Render Content Based on Type
+        const contentArea = document.getElementById("contentArea");
+        contentArea.innerHTML = ""; // Clear previous content
+
+        if (slide.type === "list") {
+            const ul = document.createElement("ul");
+            slide.content.forEach(item => {
+                const li = document.createElement("li");
+                li.innerHTML = `<strong>${item.label}:</strong> ${item.text}`;
+                ul.appendChild(li);
+            });
+            contentArea.appendChild(ul);
+        } else if (slide.type === "table") {
+            const table = document.createElement("table");
+            const thead = document.createElement("thead");
+            const trHead = document.createElement("tr");
+            slide.headers.forEach(h => {
+                const th = document.createElement("th");
+                th.innerText = h;
+                trHead.appendChild(th);
+            });
+            thead.appendChild(trHead);
+            table.appendChild(thead);
+
+            const tbody = document.createElement("tbody");
+            slide.content.forEach(row => {
+                const tr = document.createElement("tr");
+                row.forEach(cell => {
+                    const td = document.createElement("td");
+                    td.innerText = cell;
+                    tr.appendChild(td);
+                });
+                tbody.appendChild(tr);
+            });
+            table.appendChild(tbody);
+            contentArea.appendChild(table);
+        } else if (slide.type === "cards") {
+            const grid = document.createElement("div");
+            grid.className = "card-grid";
+            slide.content.forEach(card => {
+                const box = document.createElement("div");
+                box.className = "info-box";
+                let html = `<h4>${card.title}</h4><p>${card.desc}</p>`;
+                if (card.cost) html += `<span class="price-tag">${card.cost}</span>`;
+                box.innerHTML = html;
+                grid.appendChild(box);
+            });
+            contentArea.appendChild(grid);
+        } else if (slide.type === "comparison") {
+            const container = document.createElement("div");
+            container.className = "comparison-container";
+            
+            const left = document.createElement("div");
+            left.className = "comp-col";
+            left.innerHTML = `<h4>${slide.leftTitle}</h4><ul>${slide.leftData.map(d => `<li>${d}</li>`).join('')}</ul>`;
+            
+            const divider = document.createElement("div");
+            divider.className = "divider";
+            
+            const right = document.createElement("div");
+            right.className = "comp-col";
+            right.innerHTML = `<h4>${slide.rightTitle}</h4><ul>${slide.rightData.map(d => `<li>${d}</li>`).join('')}</ul>`;
+            
+            container.appendChild(left);
+            container.appendChild(divider);
+            container.appendChild(right);
+            contentArea.appendChild(container);
+        }
+
+        if (slide.note) {
+            const note = document.createElement("div");
+            note.className = "note";
+            note.innerText = slide.note;
+            contentArea.appendChild(note);
+        }
+
+        // Update Checkbox State
+        const checkBtnLabel = document.getElementById("checkBtnLabel");
+        const checkbox = document.getElementById("slideCheckbox");
+        const checkText = document.getElementById("checkText");
+
+        checkbox.checked = checkedState[currentSlide];
+        if (checkedState[currentSlide]) {
+            checkBtnLabel.classList.add("checked");
+            checkText.innerText = "? 확인 완료";
+        } else {
+            checkBtnLabel.classList.remove("checked");
+            checkText.innerText = "? 위 내용을 확인하였습니다";
+        }
+
+        // Update Button States
+        document.getElementById("prevBtn").disabled = currentSlide === 0;
+        document.getElementById("nextBtn").innerText = currentSlide === slides.length - 1 ? "완료" : "다음";
+    }
+
+    // Checkbox Event Listener
+    document.getElementById("slideCheckbox").addEventListener("change", function() {
+        const isChecked = this.checked;
+        checkedState[currentSlide] = isChecked;
+        
+        const checkBtnLabel = document.getElementById("checkBtnLabel");
+        const checkText = document.getElementById("checkText");
+
+        if (isChecked) {
+            checkBtnLabel.classList.add("checked");
+            checkText.innerText = "? 확인 완료";
+        } else {
+            checkBtnLabel.classList.remove("checked");
+            checkText.innerText = "? 위 내용을 확인하였습니다";
+        }
+
+        localStorage.setItem("weddingChecklist_v2", JSON.stringify(checkedState));
+    });
+
+    function changeSlide(direction) {
+        if (direction === 1 && currentSlide < slides.length - 1) {
+            currentSlide++;
+            renderSlide();
+        } else if (direction === -1 && currentSlide > 0) {
+            currentSlide--;
+            renderSlide();
+        }
+    }
+</script>
+
+</body>
+</html>
