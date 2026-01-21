@@ -25,10 +25,9 @@
             flex-direction: column;
             align-items: center;
             min-height: 100vh;
-            letter-spacing: -0.5px;
+            word-break: keep-all; /* 단어 단위 줄바꿈으로 가독성 향상 */
         }
 
-        /* 상단 고정 헤더 */
         header {
             width: 100%;
             max-width: 600px;
@@ -43,7 +42,6 @@
             padding: 0 20px;
             box-sizing: border-box;
             box-shadow: 0 2px 8px rgba(216, 122, 151, 0.15);
-            border-bottom: 2px solid var(--secondary-pink);
         }
 
         .header-info {
@@ -55,23 +53,22 @@
 
         header h1 {
             font-family: var(--font-point);
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             color: var(--primary-pink);
             margin: 0;
-            font-weight: normal;
         }
 
         .page-num {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: var(--primary-pink);
             font-weight: 700;
         }
 
         .progress-container {
             width: 100%;
-            height: 6px;
+            height: 4px;
             background: #f0f0f0;
-            border-radius: 3px;
+            border-radius: 2px;
             overflow: hidden;
         }
 
@@ -79,101 +76,90 @@
             height: 100%;
             background: var(--primary-pink);
             width: 0%;
-            transition: width 0.4s ease;
+            transition: width 0.3s ease;
         }
 
-        /* 메인 컨텐츠 영역 */
         .app-container {
             width: 100%;
             max-width: 600px;
-            margin-top: 85px;
-            margin-bottom: 110px;
-            padding: 0 15px;
+            margin-top: 80px;
+            margin-bottom: 100px;
+            padding: 0 12px;
             box-sizing: border-box;
         }
 
         .slide-card {
             background: white;
             border-radius: 20px;
-            padding: 25px 20px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
-            border: 1px solid rgba(216, 122, 151, 0.2);
+            padding: 20px 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border: 1px solid rgba(216, 122, 151, 0.1);
         }
 
         .slide-title {
             font-family: var(--font-point);
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             color: var(--primary-pink);
-            margin: 0 0 8px 0;
-            font-weight: normal;
+            margin-bottom: 5px;
         }
 
         .slide-subtitle {
-            font-size: 1rem;
+            font-size: 0.9rem;
             color: #888;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             padding-bottom: 10px;
-            border-bottom: 1.5px dashed var(--secondary-pink);
-            font-weight: 500;
+            border-bottom: 1px dashed var(--secondary-pink);
         }
 
         .content-area {
-            font-size: 0.95rem; /* 글자 크기 통일 */
-            line-height: 1.7;
+            font-size: 0.9rem; /* 글자 크기 최적화 */
+            line-height: 1.6;
         }
         
-        /* 리스트 스타일 */
         .summary-list { padding: 0; list-style: none; }
         .summary-list li { 
             background: #fffafa; 
-            padding: 15px; 
-            border-radius: 15px; 
-            margin-bottom: 12px; 
+            padding: 12px; 
+            border-radius: 12px; 
+            margin-bottom: 10px;
             border: 1px solid #ffeef2;
         }
-        .summary-list strong { color: var(--primary-pink); display: block; margin-bottom: 4px; font-size: 1rem; }
-        .summary-list small { color: #888; display: block; line-height: 1.4; margin-top: 4px; }
+        .summary-list strong { color: var(--primary-pink); display: block; margin-bottom: 2px; font-size: 0.95rem; }
+        .summary-list small { color: #999; font-size: 0.8rem; display: block; margin-top: 3px; }
 
-        /* 테이블 스타일 */
-        .table-wrap { overflow-x: auto; margin: 15px 0; border-radius: 12px; border: 1px solid #ffeef2; }
-        table { width: 100%; border-collapse: collapse; min-width: 320px; font-size: 0.9rem; }
-        th { background: #fff0f5; color: var(--primary-pink); padding: 12px 8px; text-align: left; font-weight: 700; }
-        td { padding: 12px 8px; border-bottom: 1px solid #fff5f8; vertical-align: top; }
+        .table-wrap { overflow-x: auto; margin: 10px 0; border-radius: 10px; border: 1px solid #eee; }
+        table { width: 100%; border-collapse: collapse; min-width: 300px; font-size: 0.8rem; }
+        th { background: #fff0f5; color: var(--primary-pink); padding: 10px 6px; text-align: left; }
+        td { padding: 10px 6px; border-bottom: 1px solid #f9f9f9; vertical-align: top; }
 
-        /* 카드 아이템 */
-        .card-item { background: #fffafa; padding: 18px; border-radius: 15px; margin-bottom: 15px; border: 1px solid #ffeef2; }
-        .card-item h4 { margin: 0 0 6px 0; color: var(--primary-pink); font-size: 1.1rem; font-family: var(--font-point); font-weight: normal; }
-        .price-tag { display: inline-block; color: var(--primary-pink); font-weight: 700; margin-top: 8px; border-top: 1px solid #ffeef2; padding-top: 5px; width: 100%; }
+        .card-item { background: #fffafa; padding: 15px; border-radius: 12px; margin-bottom: 10px; border: 1px solid #ffeef2; }
+        .card-item h4 { margin: 0 0 5px 0; color: var(--primary-pink); font-size: 1rem; font-family: var(--font-point); }
+        .price-tag { color: var(--primary-pink); font-weight: 700; font-size: 0.85rem; display: block; margin-top: 5px; }
 
-        .phase-box { background: #fffafa; padding: 18px; border-radius: 15px; margin-bottom: 15px; border: 1px solid #ffeef2; }
-        .phase-box h4 { margin: 0 0 12px 0; color: white; background: var(--primary-pink); display: inline-block; padding: 4px 15px; border-radius: 20px; font-size: 0.95rem; font-weight: 700; }
-        .phase-box ul { padding-left: 18px; margin: 0; }
-        .phase-box li { margin-bottom: 5px; }
+        .phase-box { background: #fffafa; padding: 15px; border-radius: 12px; margin-bottom: 10px; border: 1px solid #ffeef2; }
+        .phase-box h4 { margin: 0 0 8px 0; color: white; background: var(--primary-pink); display: inline-block; padding: 2px 12px; border-radius: 15px; font-size: 0.85rem; }
+        .phase-box ul { padding-left: 15px; margin: 0; }
 
-        .note { font-size: 0.85rem; color: #d87a97; background: #fff0f5; padding: 12px; border-radius: 10px; margin-top: 20px; font-weight: 700; text-align: center; }
+        .note { font-size: 0.8rem; color: #d87a97; background: #fff0f5; padding: 10px; border-radius: 8px; margin-top: 15px; font-weight: 700; text-align: center; }
 
-        /* 하단 네비게이션 */
         .footer-nav {
             position: fixed;
             bottom: 0;
             width: 100%;
             max-width: 600px;
             background: white;
-            padding: 10px 15px 30px;
+            padding: 10px 15px 25px;
             box-sizing: border-box;
             display: flex;
-            gap: 12px;
-            box-shadow: 0 -4px 12px rgba(0,0,0,0.05);
-            border-top: 1px solid #eee;
+            gap: 10px;
+            box-shadow: 0 -3px 10px rgba(0,0,0,0.05);
         }
 
-        .btn { border: none; border-radius: 14px; font-family: var(--font-point); font-size: 1.1rem; cursor: pointer; transition: 0.3s; font-weight: normal; }
-        .btn-prev { flex: 1; background: #f5f5f5; color: #999; padding: 16px 0; }
-        .btn-next { flex: 1; background: var(--primary-pink); color: white; padding: 16px 0; }
-        .btn:disabled { opacity: 0.4; }
+        .btn { border: none; border-radius: 12px; font-family: var(--font-point); font-size: 1rem; cursor: pointer; transition: 0.2s; }
+        .btn-prev { flex: 0.8; background: #f0f0f0; color: #999; padding: 15px 0; }
 
         .check-btn {
-            flex: 1.5;
+            flex: 2;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -182,7 +168,7 @@
             border: 2px solid var(--secondary-pink);
             color: var(--primary-pink);
         }
-        .check-btn.checked { background: #81c784; border-color: #81c784; color: white; }
+        .check-btn.checked { background: #81c784; border-color: #81c784; color: white; transition: background 0.3s; }
         .check-btn input { display: none; }
     </style>
 </head>
@@ -209,7 +195,6 @@
         <input type="checkbox" id="confirmCheck">
         <span id="checkIcon">⬜</span> <span id="checkText">확인</span>
     </label>
-    <button class="btn btn-next" onclick="move(1)" id="nextBtn">다음</button>
 </div>
 
 <script>
@@ -232,13 +217,13 @@
             type: "table",
             headers: ["시기", "구분", "진행 사항"],
             rows: [
-                ["'26.02", "일정 확정", "길일 택일 (양가 인사 생략), 날짜 확정 즉시 예약"],
-                ["'26.03", "장소 예약", "광주 어반브룩 등 계약 및 보증인원 협의"],
+                ["'26.02", "일정 확정", "길일 택일, 날짜 확정 즉시 예약"],
+                ["'26.03", "장소 예약", "광주 어반브룩 등 계약 및 인원 협의"],
                 ["'26.04", "촬영 예약", "스드메(토탈샵) 및 본식 스냅 예약"],
                 ["'26.10", "예물 투어", "일본 여행 겸 결혼반지(불가리) 수령"],
-                ["'26.11", "퇴거 통보", "세입자에게 만기 퇴거 통보 (내용증명 등)"],
+                ["'26.11", "퇴거 통보", "세입자 만기 퇴거 통보 (내용증명 등)"],
                 ["'27.01", "입주/혼수", "신혼집 필수 시공 및 입주 완료"],
-                ["'27.02", "본식/여행", "결혼식 진행 및 유럽(이탈리아) 신혼여행"]
+                ["'27.02", "본식/여행", "결혼식 진행 및 유럽 신혼여행"]
             ]
         },
         {
@@ -297,7 +282,7 @@
             data: [
                 {h: "가사 분담", c: "구역 관리제: 청소/빨래 분담 관리", b: "식사: 집밥 원칙, 외식/배달은 필요시에만"},
                 {h: "가족 행사", c: "명절: 양가 인사 후 즉시 귀가 (숙박 없음)", b: "지원: 양가 용돈/선물 동일 금액/빈도 집행"},
-                {h: "개인/주말", c: "종교: 상호 존중, 교회 강요 금지", b: "일요일: 아내 시골 방문 존중 (출산 후 자녀 동반 필수)"}
+                {h: "개인/주말", c: "종교: 상호 존중, 교회 강요 금지", b: "일요일: 아내 시골 방문 존중 (출산 후 자녀 동반)"}
             ]
         },
         {
@@ -334,7 +319,7 @@
                 ["혼수", "신규+S급 중고", "750"],
                 ["예비비", "시공/예복/잡비", "400"]
             ],
-            note: "비고: 예식 비용 정산 후 남은 축의금 잔액은 아내의 가게 자금으로 귀속됩니다."
+            note: "비고: 예식 비용 정산 후 남는 축의금 잔액은 아내의 가게 자금으로 귀속됩니다."
         }
     ];
 
@@ -365,14 +350,13 @@
         
         document.getElementById("content").innerHTML = html;
         document.getElementById("prevBtn").disabled = (current === 0);
-        document.getElementById("nextBtn").innerText = (current === slides.length - 1) ? "확인 완료" : "다음";
         
         const checkbox = document.getElementById("confirmCheck");
         checkbox.checked = checks[current];
-        updateCheckUI();
+        updateCheckUI(false); // 렌더링 시에는 자동 이동 방지
     }
 
-    function updateCheckUI() {
+    function updateCheckUI(autoMove = true) {
         const checked = document.getElementById("confirmCheck").checked;
         const label = document.getElementById("checkBtn");
         const icon = document.getElementById("checkIcon");
@@ -382,6 +366,13 @@
             label.classList.add("checked");
             icon.innerText = "✅";
             text.innerText = "확인됨";
+            
+            // 확인 시 0.5초 후 자동 다음 페이지 이동
+            if(autoMove) {
+                setTimeout(() => {
+                    move(1);
+                }, 500);
+            }
         } else {
             label.classList.remove("checked");
             icon.innerText = "⬜";
@@ -391,7 +382,7 @@
 
     document.getElementById("confirmCheck").onchange = function() {
         checks[current] = this.checked;
-        updateCheckUI();
+        updateCheckUI(true);
     };
 
     function move(n) {
@@ -400,7 +391,7 @@
             render();
             window.scrollTo(0,0);
         } else if (current + n === slides.length) {
-            alert("모든 계획 내용을 확인하였습니다. 💍");
+            alert("모든 계획 내용을 확인하였습니다! 💍");
         }
     }
 
