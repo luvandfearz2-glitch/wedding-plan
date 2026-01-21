@@ -3,35 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>결혼 계획 내용 동의서</title>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Jua&family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+    <title>결혼 계획 내용 확인서</title>
+    <link href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary-pink: #d87a97;
             --secondary-pink: #ffc2d1;
-            --light-pink-bg: #fff0f5;
+            --light-pink-bg: #fff5f8;
             --card-bg: #ffffff;
-            --text-color: #5a4a4f;
-            --title-font: 'Jua', sans-serif;
-            --body-font: 'Noto Sans KR', sans-serif;
+            --text-color: #4a4a4a;
+            --font-main: 'Noto Sans KR', sans-serif;
+            --font-point: 'Jua', sans-serif;
         }
 
         body {
             margin: 0;
-            font-family: var(--body-font);
+            font-family: var(--font-main);
             background-color: var(--light-pink-bg);
             color: var(--text-color);
             display: flex;
             flex-direction: column;
             align-items: center;
             min-height: 100vh;
+            letter-spacing: -0.5px;
         }
 
-        /* 상단 고정 바 최소화 */
+        /* 상단 고정 헤더 */
         header {
             width: 100%;
             max-width: 600px;
-            height: 60px;
+            height: 65px;
             background: white;
             position: fixed;
             top: 0;
@@ -39,51 +40,54 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            padding: 0 15px;
+            padding: 0 20px;
             box-sizing: border-box;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 8px rgba(216, 122, 151, 0.15);
+            border-bottom: 2px solid var(--secondary-pink);
         }
 
         .header-info {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 5px;
+            margin-bottom: 4px;
         }
 
         header h1 {
-            font-family: var(--title-font);
-            font-size: 1.1rem;
+            font-family: var(--font-point);
+            font-size: 1.2rem;
             color: var(--primary-pink);
             margin: 0;
+            font-weight: normal;
         }
 
         .page-num {
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             color: var(--primary-pink);
-            font-weight: bold;
+            font-weight: 700;
         }
 
         .progress-container {
             width: 100%;
-            height: 4px;
-            background: #eee;
-            border-radius: 2px;
+            height: 6px;
+            background: #f0f0f0;
+            border-radius: 3px;
+            overflow: hidden;
         }
 
         .progress-bar {
             height: 100%;
             background: var(--primary-pink);
             width: 0%;
-            transition: width 0.3s ease;
+            transition: width 0.4s ease;
         }
 
         /* 메인 컨텐츠 영역 */
         .app-container {
             width: 100%;
             max-width: 600px;
-            margin-top: 75px;
-            margin-bottom: 100px;
+            margin-top: 85px;
+            margin-bottom: 110px;
             padding: 0 15px;
             box-sizing: border-box;
         }
@@ -91,70 +95,85 @@
         .slide-card {
             background: white;
             border-radius: 20px;
-            padding: 20px;
-            box-shadow: 0 4px 15px rgba(216, 122, 151, 0.1);
+            padding: 25px 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            border: 1px solid rgba(216, 122, 151, 0.2);
         }
 
         .slide-title {
-            font-family: var(--title-font);
-            font-size: 1.4rem;
+            font-family: var(--font-point);
+            font-size: 1.5rem;
             color: var(--primary-pink);
-            margin: 0 0 5px 0;
+            margin: 0 0 8px 0;
+            font-weight: normal;
         }
 
         .slide-subtitle {
-            font-size: 0.95rem;
-            color: #8a7a80;
-            margin-bottom: 15px;
-            padding-bottom: 8px;
-            border-bottom: 2px dashed var(--secondary-pink);
+            font-size: 1rem;
+            color: #888;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1.5px dashed var(--secondary-pink);
+            font-weight: 500;
         }
 
-        /* 상세 데이터 스타일 */
-        .content-area { font-size: 0.92rem; line-height: 1.6; }
+        .content-area {
+            font-size: 0.95rem; /* 글자 크기 통일 */
+            line-height: 1.7;
+        }
         
+        /* 리스트 스타일 */
         .summary-list { padding: 0; list-style: none; }
         .summary-list li { 
-            background: #fff9fb; padding: 12px; border-radius: 12px; margin-bottom: 10px; border-left: 4px solid var(--primary-pink);
+            background: #fffafa; 
+            padding: 15px; 
+            border-radius: 15px; 
+            margin-bottom: 12px; 
+            border: 1px solid #ffeef2;
         }
-        .summary-list strong { color: var(--primary-pink); display: block; margin-bottom: 2px; font-size: 0.95rem; }
+        .summary-list strong { color: var(--primary-pink); display: block; margin-bottom: 4px; font-size: 1rem; }
+        .summary-list small { color: #888; display: block; line-height: 1.4; margin-top: 4px; }
 
-        .table-wrap { overflow-x: auto; margin: 10px 0; border-radius: 10px; border: 1px solid #ffe3ec; }
-        table { width: 100%; border-collapse: collapse; min-width: 300px; font-size: 0.82rem; }
-        th { background: #ffe3ec; color: var(--primary-pink); padding: 10px 5px; text-align: left; }
-        td { padding: 10px 5px; border-bottom: 1px solid #fff0f5; vertical-align: top; }
+        /* 테이블 스타일 */
+        .table-wrap { overflow-x: auto; margin: 15px 0; border-radius: 12px; border: 1px solid #ffeef2; }
+        table { width: 100%; border-collapse: collapse; min-width: 320px; font-size: 0.9rem; }
+        th { background: #fff0f5; color: var(--primary-pink); padding: 12px 8px; text-align: left; font-weight: 700; }
+        td { padding: 12px 8px; border-bottom: 1px solid #fff5f8; vertical-align: top; }
 
-        .card-item { background: #fff5f8; padding: 15px; border-radius: 15px; margin-bottom: 12px; border: 1px solid #ffe3ec; }
-        .card-item h4 { margin: 0 0 5px 0; color: var(--primary-pink); font-size: 1rem; }
-        .price-tag { display: inline-block; background: var(--secondary-pink); padding: 2px 8px; border-radius: 8px; font-size: 0.8rem; font-weight: bold; margin-top: 5px; }
+        /* 카드 아이템 */
+        .card-item { background: #fffafa; padding: 18px; border-radius: 15px; margin-bottom: 15px; border: 1px solid #ffeef2; }
+        .card-item h4 { margin: 0 0 6px 0; color: var(--primary-pink); font-size: 1.1rem; font-family: var(--font-point); font-weight: normal; }
+        .price-tag { display: inline-block; color: var(--primary-pink); font-weight: 700; margin-top: 8px; border-top: 1px solid #ffeef2; padding-top: 5px; width: 100%; }
 
-        .phase-box { background: #fdf2f5; padding: 15px; border-radius: 15px; margin-bottom: 15px; }
-        .phase-box h4 { margin: 0 0 10px 0; color: white; background: var(--primary-pink); display: inline-block; padding: 2px 10px; border-radius: 20px; font-size: 0.9rem; }
+        .phase-box { background: #fffafa; padding: 18px; border-radius: 15px; margin-bottom: 15px; border: 1px solid #ffeef2; }
+        .phase-box h4 { margin: 0 0 12px 0; color: white; background: var(--primary-pink); display: inline-block; padding: 4px 15px; border-radius: 20px; font-size: 0.95rem; font-weight: 700; }
         .phase-box ul { padding-left: 18px; margin: 0; }
+        .phase-box li { margin-bottom: 5px; }
 
-        .note { font-size: 0.82rem; color: #d87a97; background: #fff0f5; padding: 10px; border-radius: 10px; margin-top: 15px; font-weight: bold; }
+        .note { font-size: 0.85rem; color: #d87a97; background: #fff0f5; padding: 12px; border-radius: 10px; margin-top: 20px; font-weight: 700; text-align: center; }
 
-        /* 하단 고정 네비게이션 */
+        /* 하단 네비게이션 */
         .footer-nav {
             position: fixed;
             bottom: 0;
             width: 100%;
             max-width: 600px;
             background: white;
-            padding: 10px 15px 25px;
+            padding: 10px 15px 30px;
             box-sizing: border-box;
             display: flex;
-            gap: 10px;
-            box-shadow: 0 -5px 15px rgba(0,0,0,0.05);
+            gap: 12px;
+            box-shadow: 0 -4px 12px rgba(0,0,0,0.05);
+            border-top: 1px solid #eee;
         }
 
-        .btn { border: none; border-radius: 12px; font-family: var(--title-font); font-size: 1rem; cursor: pointer; transition: 0.2s; }
-        .btn-prev { flex: 1; background: #ffe3ec; color: var(--primary-pink); padding: 15px 0; }
-        .btn-next { flex: 1; background: var(--primary-pink); color: white; padding: 15px 0; }
-        .btn:disabled { opacity: 0.5; }
+        .btn { border: none; border-radius: 14px; font-family: var(--font-point); font-size: 1.1rem; cursor: pointer; transition: 0.3s; font-weight: normal; }
+        .btn-prev { flex: 1; background: #f5f5f5; color: #999; padding: 16px 0; }
+        .btn-next { flex: 1; background: var(--primary-pink); color: white; padding: 16px 0; }
+        .btn:disabled { opacity: 0.4; }
 
         .check-btn {
-            flex: 2;
+            flex: 1.5;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -163,7 +182,7 @@
             border: 2px solid var(--secondary-pink);
             color: var(--primary-pink);
         }
-        .check-btn.checked { background: #56ab2f; border-color: #56ab2f; color: white; }
+        .check-btn.checked { background: #81c784; border-color: #81c784; color: white; }
         .check-btn input { display: none; }
     </style>
 </head>
@@ -171,7 +190,7 @@
 
 <header>
     <div class="header-info">
-        <h1>결혼 계획 내용 동의서</h1>
+        <h1>결혼 계획 내용 확인서 🌸</h1>
         <div id="pageIndicator" class="page-num">1 / 10</div>
     </div>
     <div class="progress-container">
@@ -188,7 +207,7 @@
     <button class="btn btn-prev" onclick="move(-1)" id="prevBtn">이전</button>
     <label class="btn check-btn" id="checkBtn">
         <input type="checkbox" id="confirmCheck">
-        <span id="checkIcon">⬜</span> <span id="checkText">동의</span>
+        <span id="checkIcon">⬜</span> <span id="checkText">확인</span>
     </label>
     <button class="btn btn-next" onclick="move(1)" id="nextBtn">다음</button>
 </div>
@@ -200,7 +219,7 @@
             subtitle: "생애주기별 핵심 목표 요약",
             type: "summary",
             data: [
-                {h: "결혼", c: "'27년 2월 예식 / 광주 합리적 웨딩 / 유럽 허니문", b: "잔여 축의금은 아내 가게 자금 활용"},
+                {h: "결혼", c: "'27년 2월 예식 / 광주 합리적 웨딩 / 유럽 허니문", b: "예식 후 잔여 축의금은 아내 가게 자금 활용"},
                 {h: "주거", c: "'27년 1월 입주 / 에너지밸리 풍경채 / 부분 시공", b: "입주청소 및 반려견 코팅 필수"},
                 {h: "재정", c: "출산 전후 '이원화 관리' 시스템 도입", b: "출산 후 생활비 및 보험료 지원 개시"},
                 {h: "자산", c: "40대 10억 → 60대 50억 달성 (적립식 투자)", b: "비정기 수입 전액 재투자 원칙"},
@@ -231,15 +250,15 @@
                 {t: "2. 시크릿가든 (광산구)", d: "하우스/파티, 숲속 산장 분위기, 파티형 최적", p: "식대 54,000 / 예산 약 900만"},
                 {t: "3. 제이아트 (서구)", d: "편의성/규모, 높은 층고, 넓은 주차장", p: "식대 55,000 / 예산 약 850만"}
             ],
-            note: "※ 예식 비용 정산 후 남는 축의금 잔액은 전액 아내의 가게 운영/창업 자금으로 귀속함."
+            note: "※ 예식 비용 정산 후 남는 축의금 잔액은 전액 아내의 가게 운영 자금으로 귀속합니다."
         },
         {
             title: "4. 촬영/의상 (스드메)",
             subtitle: "토탈샵 통합 패키지 전략",
             type: "cards",
             data: [
-                {t: "1. 마이든", d: "심플/인물 중심, 깨끗하고 유행 타지 않는 세련됨", p: "예산 약 380만 / 추천 1순위"},
-                {t: "2. 줄리엣발코니", d: "그리너리/자연광, 화사하고 따뜻한 색감", p: "예산 약 340만 / 야외 촬영 느낌"},
+                {t: "1. 마이든", d: "심플/인물 중심, 깨끗하고 세련된 스타일", p: "예산 약 380만 / 추천 1순위"},
+                {t: "2. 줄리엣발코니", d: "그리너리/자연광, 화사하고 따뜻한 색감", p: "예산 약 340만 / 야외 촬영 무드"},
                 {t: "3. 원규", d: "다양성/화보, 한옥 및 앤틱 등 배경 풍부", p: "예산 약 410만 / 표정 연기 보완"}
             ]
         },
@@ -269,7 +288,7 @@
                 t: "Phase 2: 출산 후 ~ 육아기",
                 c: ["시기: 2028년 이후 (출산 시)", "주거/식비: 남편 전액 부담 (유지)", "생활비: 월 100~200만 원 지원", "보험료: 아내 보험료 남편이 납부"]
             },
-            note: "✨ 성과급 등 비정기 수입은 전액 투자 적립하며, 인출 시 생활비에서 차감하여 원금 복구함."
+            note: "✨ 성과급 등 비정기 수입은 전액 투자 적립하며, 인출 시 사용액만큼 생활비에서 복구합니다."
         },
         {
             title: "7. 부부 생활 수칙",
@@ -288,9 +307,9 @@
             data: [
                 {h: "40대 (10억)", c: "종잣돈 마련 + 상급지 아파트 이동", b: "자산 10억 전까지 차량 교체 없음"},
                 {h: "50대 (30억)", c: "부동산 가치 상승 + 투자 복리 효과", b: ""},
-                {h: "60대 (50억)", c: "자산 포트폴리오 다각화 및 은퇴 준비", b: "은퇴 후 대형 애견카페 창업 및 강의"}
+                {h: "60대 (50억)", c: "자원 다각화 및 은퇴 준비", b: "은퇴 후 대형 애견카페 창업 및 강의"}
             ],
-            note: "사용 금액만큼 생활비에서 빼서 다시 넣는 페널티 시스템 적용"
+            note: "적립금 사용 시 생활비에서 원금을 복구하는 페널티 시스템 적용"
         },
         {
             title: "9. 예물 및 허니문",
@@ -315,7 +334,7 @@
                 ["혼수", "신규+S급 중고", "750"],
                 ["예비비", "시공/예복/잡비", "400"]
             ],
-            note: "비고: 예식 비용 정산 후 남은 축의금 잔액은 아내의 가게 자금으로 귀속."
+            note: "비고: 예식 비용 정산 후 남은 축의금 잔액은 아내의 가게 자금으로 귀속됩니다."
         }
     ];
 
@@ -330,12 +349,12 @@
         let html = `<h2 class="slide-title">${slide.title}</h2><h3 class="slide-subtitle">${slide.subtitle}</h3><div class="content-area">`;
         
         if(slide.type === "summary") {
-            html += `<ul class="summary-list">` + slide.data.map(d => `<li><strong>${d.h}</strong>${d.c}<br><small style="color:#888">${d.b}</small></li>`).join('') + `</ul>`;
+            html += `<ul class="summary-list">` + slide.data.map(d => `<li><strong>${d.h}</strong>${d.c}<br><small>${d.b}</small></li>`).join('') + `</ul>`;
         } else if(slide.type === "table") {
             html += `<div class="table-wrap"><table><thead><tr>${slide.headers.map(h=>`<th>${h}</th>`).join('')}</tr></thead><tbody>` + 
                     slide.rows.map(r => `<tr>${r.map(c=>`<td>${c}</td>`).join('')}</tr>`).join('') + `</tbody></table></div>`;
         } else if(slide.type === "cards") {
-            html += slide.data.map(d => `<div class="card-item"><h4>${d.t}</h4><p>${d.d}</p><span class="price-tag">${d.p}</span></div>`).join('');
+            html += slide.data.map(d => `<div class="card-item"><h4>${d.t}</h4><p>${d.d}</p><div class="price-tag">${d.p}</div></div>`).join('');
         } else if(slide.type === "phase") {
             html += `<div class="phase-box"><h4>${slide.p1.t}</h4><ul>${slide.p1.c.map(i=>`<li>${i}</li>`).join('')}</ul></div>`;
             html += `<div class="phase-box"><h4>${slide.p2.t}</h4><ul>${slide.p2.c.map(i=>`<li>${i}</li>`).join('')}</ul></div>`;
@@ -346,7 +365,7 @@
         
         document.getElementById("content").innerHTML = html;
         document.getElementById("prevBtn").disabled = (current === 0);
-        document.getElementById("nextBtn").innerText = (current === slides.length - 1) ? "서명 완료" : "다음";
+        document.getElementById("nextBtn").innerText = (current === slides.length - 1) ? "확인 완료" : "다음";
         
         const checkbox = document.getElementById("confirmCheck");
         checkbox.checked = checks[current];
@@ -362,11 +381,11 @@
         if(checked) {
             label.classList.add("checked");
             icon.innerText = "✅";
-            text.innerText = "동의함";
+            text.innerText = "확인됨";
         } else {
             label.classList.remove("checked");
             icon.innerText = "⬜";
-            text.innerText = "동의";
+            text.innerText = "확인";
         }
     }
 
@@ -381,7 +400,7 @@
             render();
             window.scrollTo(0,0);
         } else if (current + n === slides.length) {
-            alert("모든 계획 내용에 동의하셨습니다. 이제 되돌릴 수 없어요! ❤️");
+            alert("모든 계획 내용을 확인하였습니다. 💍");
         }
     }
 
