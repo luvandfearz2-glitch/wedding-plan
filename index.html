@@ -3,217 +3,345 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2027 Wedding Master Plan</title>
+    <title>ìš°ë¦¬ë“¤ì˜ ê²°í˜¼ ì¤€ë¹„ ì²´í¬ë¦¬ìŠ¤íŠ¸</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Jua&family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #2c3e50;
-            --accent-color: #e74c3c;
-            --bg-color: #f5f7fa;
-            --card-bg: #ffffff;
-            --text-color: #333;
-            --border-radius: 12px;
+            /* í•‘í¬ í…Œë§ˆ ì»¬ëŸ¬ íŒ”ë ˆíŠ¸ */
+            --primary-pink: #d87a97;    /* ë©”ì¸ ë¡œì¦ˆ í•‘í¬ (ì§„í•œ ê°•ì¡°ìƒ‰) */
+            --secondary-pink: #ffc2d1;  /* ì„œë¸Œ í•‘í¬ (ë²„íŠ¼, í¬ì¸íŠ¸) */
+            --light-pink-bg: #fff0f5;   /* ì•„ì£¼ ì—°í•œ ë°°ê²½ í•‘í¬ */
+            --card-bg: #ffffff;         /* ì¹´ë“œ ë°°ê²½ (í°ìƒ‰) */
+            --text-color: #5a4a4f;      /* ë¶€ë“œëŸ¬ìš´ ì§™ì€ íšŒê°ˆìƒ‰ í…ìŠ¤íŠ¸ */
+            --accent-color: #ff6b81;    /* ê°•ì¡° í¬ì¸íŠ¸ (ê°€ê²© ë“±) */
+            --success-color: #81c784;   /* ì²´í¬ ì™„ë£Œ ì´ˆë¡ìƒ‰ */
+            --border-radius: 25px;      /* ë” ë‘¥ê·¼ ëª¨ì„œë¦¬ */
+            --header-font: 'Dancing Script', cursive; /* ì˜ë¬¸ í•„ê¸°ì²´ í°íŠ¸ */
+            --title-font: 'Jua', sans-serif; /* í•œê¸€ ê·€ì—¬ìš´ ì œëª© í°íŠ¸ */
+            --body-font: 'Noto Sans KR', sans-serif; /* ë³¸ë¬¸ ê°€ë…ì„± í°íŠ¸ */
         }
 
         body {
             margin: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            background-color: var(--bg-color);
+            font-family: var(--body-font);
+            background-color: var(--light-pink-bg);
+            /* ë°°ê²½ì— ì€ì€í•œ í•˜íŠ¸ íŒ¨í„´ ì¶”ê°€ */
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(255, 194, 209, 0.2) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(216, 122, 151, 0.2) 0%, transparent 20%);
+            background-attachment: fixed;
             color: var(--text-color);
             display: flex;
             justify-content: center;
             min-height: 100vh;
+            padding: 20px 10px;
+            box-sizing: border-box;
         }
 
         .app-container {
             width: 100%;
-            max-width: 600px;
-            padding: 20px;
+            max-width: 550px;
             display: flex;
             flex-direction: column;
-            box-sizing: border-box;
+            height: 100%; /* ëª¨ë°”ì¼ í™”ë©´ ê½‰ ì°¨ê²Œ */
+            max-height: 90vh; /* ë„ˆë¬´ ê¸¸ì–´ì§€ì§€ ì•Šê²Œ ì œí•œ */
         }
 
+        /* ê·€ì—¬ìš´ í—¤ë” ë””ìì¸ */
         header {
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .character-header {
+            /* ì‹ ë‘ì‹ ë¶€ ìºë¦­í„° SVG (ì¸ë¼ì¸ìœ¼ë¡œ ì‚½ì…í•˜ì—¬ ë‹¨ì¼ íŒŒì¼ ìœ ì§€) */
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 150'%3E%3Cstyle%3E.st0%7Bfill:%235A4A4F%7D.st1%7Bfill:%23D87A97%7D.st2%7Bfill:%23FFC2D1%7D.st3%7Bfill:%23FFFFFF%7D%3C%2Fstyle%3E%3Ccircle class='st2' cx='100' cy='75' r='70' opacity='0.3'/%3E%3Cpath class='st0' d='M65 50c0-8.3 6.7-15 15-15s15 6.7 15 15v10H65V50z'/%3E%3Cpath class='st2' d='M65 60h30v40H65z'/%3E%3Ccircle class='st2' cx='80' cy='45' r='12'/%3E%3Cpath class='st0' d='M125 50c0-8.3 6.7-15 15-15s15 6.7 15 15v15h-30V50z'/%3E%3Cpath class='st3' d='M120 65h40v45h-40z'/%3E%3Cpath class='st1' d='M120 85h40v10h-40zM125 45c0 0 5-5 10-5s10 5 10 5'/%3E%3Ccircle class='st2' cx='140' cy='45' r='12'/%3E%3Cpath class='st1' d='M95 65l5 5 5-5M80 35l-2-2M140 35l2-2' stroke='%23D87A97' stroke-width='2' stroke-linecap='round'/%3E%3Cpath class='st1' d='M100 100c0 0 5 5 10 0' fill='none' stroke='%23D87A97' stroke-width='2'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: center bottom;
+            background-size: contain;
+            height: 80px;
+            margin-bottom: 10px;
         }
 
         h1 {
-            font-size: 1.2rem;
-            color: var(--primary-color);
-            margin: 0 0 10px 0;
+            font-family: var(--title-font);
+            font-size: 1.8rem;
+            color: var(--primary-pink);
+            margin: 0;
+            text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
+        }
+        h1 span {
+            font-family: var(--header-font);
+            font-size: 2.2rem;
+            display: block;
+            line-height: 0.8;
         }
 
         .progress-bar-container {
             width: 100%;
-            height: 6px;
-            background-color: #e0e0e0;
-            border-radius: 3px;
+            height: 12px;
+            background-color: #ffe3ec;
+            border-radius: 10px;
             overflow: hidden;
-            margin-bottom: 5px;
+            margin: 15px 0 5px;
+            border: 2px solid #fff;
+            box-shadow: 0 2px 5px rgba(216, 122, 151, 0.1);
         }
 
         .progress-bar {
             height: 100%;
-            background-color: var(--primary-color);
+            background: linear-gradient(90deg, var(--secondary-pink), var(--primary-pink));
             width: 0%;
-            transition: width 0.3s ease;
+            transition: width 0.4s ease-in-out;
+            border-radius: 10px;
         }
 
         .page-indicator {
-            font-size: 0.8rem;
-            color: #666;
+            font-size: 0.9rem;
+            color: var(--primary-pink);
+            font-weight: bold;
         }
 
+        /* ë©”ì¸ ì¹´ë“œ ë””ìì¸ */
         .slide-card {
             background: var(--card-bg);
             border-radius: var(--border-radius);
-            padding: 25px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            padding: 25px 30px;
+            /* ë¶€ë“œëŸ¬ìš´ í•‘í¬ ê·¸ë¦¼ì */
+            box-shadow: 0 10px 25px rgba(216, 122, 151, 0.2);
             flex: 1;
             display: flex;
             flex-direction: column;
             overflow-y: auto;
+            border: 3px solid #fff0f5;
+            /* ìŠ¤í¬ë¡¤ë°” ì»¤ìŠ¤í…€ */
+            scrollbar-width: thin;
+            scrollbar-color: var(--secondary-pink) var(--light-pink-bg);
         }
+        /* ì›¹í‚· ë¸Œë¼ìš°ì € ìŠ¤í¬ë¡¤ë°” */
+        .slide-card::-webkit-scrollbar { width: 8px; }
+        .slide-card::-webkit-scrollbar-track { background: var(--light-pink-bg); border-radius: 4px; }
+        .slide-card::-webkit-scrollbar-thumb { background-color: var(--secondary-pink); border-radius: 4px; border: 2px solid var(--light-pink-bg); }
+
 
         .slide-title {
-            font-size: 1.4rem;
-            color: var(--primary-color);
+            font-family: var(--title-font);
+            font-size: 1.6rem;
+            color: var(--primary-pink);
             margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .slide-title::before {
+            content: 'ğŸ’–'; /* ì œëª© ì• í•˜íŠ¸ ì´ëª¨ì§€ */
+            font-size: 1.4rem;
         }
 
         .slide-subtitle {
-            font-size: 1rem;
-            color: #7f8c8d;
-            margin-top: 5px;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #eee;
+            font-size: 1.05rem;
+            color: #8a7a80;
+            margin-top: 8px;
+            margin-bottom: 25px;
+            padding-bottom: 12px;
+            border-bottom: 2px dashed var(--secondary-pink);
+            font-weight: normal;
         }
 
         .content-area {
             flex: 1;
-            font-size: 0.95rem;
-            line-height: 1.6;
+            font-size: 1rem;
+            line-height: 1.7;
         }
 
-        /* Content Styles */
-        ul { padding-left: 20px; margin: 0; }
-        li { margin-bottom: 8px; }
+        /* ë¦¬ìŠ¤íŠ¸ ìŠ¤íƒ€ì¼ */
+        ul { padding-left: 20px; margin: 0; list-style-type: none; }
+        li { margin-bottom: 12px; position: relative; padding-left: 5px; }
+        li strong { color: var(--primary-pink); font-family: var(--title-font); font-weight: normal; }
+        li::before {
+            content: 'ğŸŒ¸'; /* ë¦¬ìŠ¤íŠ¸ ì• ê½ƒ ì´ëª¨ì§€ */
+            position: absolute;
+            left: -25px;
+            top: -2px;
+            font-size: 1.1rem;
+        }
 
+        /* í…Œì´ë¸” ìŠ¤íƒ€ì¼ */
         table {
             width: 100%;
-            border-collapse: collapse;
-            font-size: 0.85rem;
+            border-collapse: separate;
+            border-spacing: 0;
+            font-size: 0.9rem;
             margin-top: 10px;
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid var(--secondary-pink);
         }
         th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
+            padding: 12px;
             text-align: left;
+            border-bottom: 1px solid #ffe3ec;
         }
-        th { background-color: #f8f9fa; }
+        th {
+            background-color: #ffe3ec;
+            color: var(--primary-pink);
+            font-family: var(--title-font);
+            font-weight: normal;
+        }
+        tr:last-child td { border-bottom: none; }
 
+        /* ì¹´ë“œí˜• ì»¨í…ì¸  ìŠ¤íƒ€ì¼ */
         .card-grid {
             display: grid;
             gap: 15px;
         }
         .info-box {
-            background: #f8f9fa;
-            padding: 15px;
-            border-radius: 8px;
-            border-left: 4px solid var(--primary-color);
+            background: #fff5f8; /* ì•„ì£¼ ì—°í•œ í•‘í¬ ë°°ê²½ */
+            padding: 18px;
+            border-radius: 15px;
+            border: 2px solid #ffe3ec;
+            box-shadow: 0 4px 10px rgba(216, 122, 151, 0.05);
+            transition: transform 0.2s;
         }
-        .info-box h4 { margin: 0 0 5px 0; font-size: 1rem; }
-        .info-box p { margin: 0; font-size: 0.9rem; color: #555; }
+        .info-box:hover { transform: translateY(-3px); }
+        .info-box h4 { margin: 0 0 8px 0; font-size: 1.1rem; color: var(--primary-pink); font-family: var(--title-font); font-weight: normal; }
+        .info-box p { margin: 0; font-size: 0.95rem; color: var(--text-color); }
         .price-tag {
             display: inline-block;
-            background-color: var(--accent-color);
-            color: white;
-            font-size: 0.75rem;
-            padding: 2px 6px;
-            border-radius: 4px;
-            margin-top: 5px;
-        }
-
-        .comparison-container {
-            display: flex;
-            background: #f1f2f6;
-            border-radius: 8px;
-            padding: 10px;
-            font-size: 0.85rem;
-            gap: 10px;
-        }
-        .comp-col { flex: 1; }
-        .comp-col h4 { color: var(--primary-color); margin: 0 0 5px 0; font-size: 0.9rem; }
-        .comp-col ul { padding-left: 15px; }
-        .divider { width: 1px; background: #ccc; }
-
-        .note {
-            margin-top: 15px;
-            font-size: 0.85rem;
-            color: var(--accent-color);
+            background-color: var(--secondary-pink);
+            color: var(--text-color);
+            font-size: 0.8rem;
+            padding: 4px 10px;
+            border-radius: 12px;
+            margin-top: 10px;
             font-weight: bold;
         }
 
-        /* Checkbox Section */
+        /* ë¹„êµ ì˜ì—­ ìŠ¤íƒ€ì¼ */
+        .comparison-container {
+            display: flex;
+            background: #fff5f8;
+            border-radius: 15px;
+            padding: 15px;
+            font-size: 0.9rem;
+            gap: 15px;
+            border: 2px solid #ffe3ec;
+        }
+        .comp-col { flex: 1; }
+        .comp-col h4 { color: var(--primary-pink); margin: 0 0 10px 0; font-size: 1rem; font-family: var(--title-font); text-align: center; background: #ffe3ec; padding: 5px; border-radius: 10px;}
+        .comp-col ul { padding-left: 5px; }
+        .comp-col li::before { content: 'ğŸ€'; font-size: 0.9rem; left:-22px; top: 0px;}
+        .divider { width: 2px; background: #ffe3ec; border-radius: 2px; }
+
+        .note {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: var(--primary-pink);
+            font-weight: bold;
+            text-align: center;
+            background-color: #fff0f5;
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        /* ì²´í¬ë°•ìŠ¤ ì„¹ì…˜ ë””ìì¸ */
         .check-section {
-            margin-top: 30px;
-            padding-top: 20px;
-            border-top: 1px dashed #ddd;
+            margin-top: auto; /* ì¹´íŠ¸ í•˜ë‹¨ì— ê³ ì • */
+            padding-top: 25px;
+            border-top: 2px dashed var(--secondary-pink);
             text-align: center;
         }
 
         .check-btn {
             display: inline-flex;
             align-items: center;
-            gap: 10px;
-            padding: 12px 24px;
-            border-radius: 30px;
-            background-color: #f0f0f0;
+            justify-content: center;
+            gap: 12px;
+            padding: 15px 30px;
+            border-radius: 35px;
+            background-color: #fff;
+            border: 2px solid var(--secondary-pink);
+            color: var(--primary-pink);
             cursor: pointer;
-            transition: all 0.2s;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
             user-select: none;
+            font-family: var(--title-font);
+            font-size: 1.1rem;
+            box-shadow: 0 4px 10px rgba(216, 122, 151, 0.1);
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        .check-btn:hover {
+             background-color: #fff0f5;
+             transform: scale(1.02);
         }
 
         .check-btn.checked {
-            background-color: #e8f5e9;
-            color: #2e7d32;
-            border: 1px solid #2e7d32;
-            font-weight: bold;
+            background: linear-gradient(135deg, #a8e063, #56ab2f); /* ì‹±ê·¸ëŸ¬ìš´ ì´ˆë¡ ê·¸ë¼ë°ì´ì…˜ */
+            color: white;
+            border: none;
+            box-shadow: 0 5px 15px rgba(86, 171, 47, 0.3);
         }
 
         .check-btn input { display: none; }
 
+        /* í‘¸í„° ë²„íŠ¼ ë””ìì¸ */
         footer {
             display: flex;
             justify-content: space-between;
-            margin-top: 20px;
+            margin-top: 25px;
+            gap: 20px;
         }
 
         button {
-            padding: 12px 24px;
+            flex: 1;
+            padding: 15px;
             border: none;
-            border-radius: 8px;
-            font-size: 1rem;
+            border-radius: var(--border-radius);
+            font-size: 1.1rem;
+            font-family: var(--title-font);
             cursor: pointer;
-            background-color: #e0e0e0;
-            color: #333;
+            background-color: #ffe3ec;
+            color: var(--primary-pink);
+            transition: all 0.2s;
+            box-shadow: 0 4px 10px rgba(216, 122, 151, 0.1);
+        }
+
+        button:hover:not(:disabled) {
+            background-color: var(--secondary-pink);
+            transform: translateY(-2px);
         }
 
         button.primary {
-            background-color: var(--primary-color);
+            background: linear-gradient(135deg, var(--secondary-pink), var(--primary-pink));
             color: white;
+            box-shadow: 0 5px 15px rgba(216, 122, 151, 0.3);
+        }
+        button.primary:hover:not(:disabled) {
+             opacity: 0.95;
         }
 
         button:disabled {
             opacity: 0.5;
             cursor: not-allowed;
+            background-color: #f0f0f0;
+            color: #999;
+            box-shadow: none;
         }
 
-        @media (max-width: 400px) {
-            .comparison-container { flex-direction: column; }
-            .divider { width: 100%; height: 1px; margin: 10px 0; }
+        @media (max-height: 700px) {
+            .slide-card { padding: 15px 20px; }
+            .slide-title { font-size: 1.4rem; }
+            .check-btn { padding: 10px 20px; }
+        }
+        @media (max-width: 450px) {
+            h1 span { font-size: 1.8rem; }
+            h1 { font-size: 1.4rem; }
+             .comparison-container { flex-direction: column; }
+            .divider { width: 100%; height: 2px; margin: 10px 0; }
+            .check-btn { width: 100%; box-sizing: border-box; font-size: 1rem;}
         }
     </style>
 </head>
@@ -221,7 +349,11 @@
 
 <div class="app-container">
     <header>
-        <h1>2027 Wedding Master Plan</h1>
+        <div class="character-header"></div>
+        <h1>
+            <span>Wedding Plan</span>
+            2027 ìš°ë¦¬ë“¤ì˜ ê²°í˜¼ ì¤€ë¹„
+        </h1>
         <div class="progress-bar-container">
             <div class="progress-bar" id="progressBar"></div>
         </div>
@@ -238,131 +370,132 @@
         <div class="check-section">
             <label class="check-btn" id="checkBtnLabel">
                 <input type="checkbox" id="slideCheckbox">
-                <span id="checkText">? À§ ³»¿ëÀ» È®ÀÎÇÏ¿´½À´Ï´Ù</span>
+                <span id="checkIcon">â¬œ</span>
+                <span id="checkText">í™•ì¸í–ˆìŠµë‹ˆë‹¤</span>
             </label>
         </div>
     </main>
 
     <footer>
-        <button id="prevBtn" onclick="changeSlide(-1)">ÀÌÀü</button>
-        <button id="nextBtn" class="primary" onclick="changeSlide(1)">´ÙÀ½</button>
+        <button id="prevBtn" onclick="changeSlide(-1)">ì´ì „</button>
+        <button id="nextBtn" class="primary" onclick="changeSlide(1)">ë‹¤ìŒ</button>
     </footer>
 </div>
 
 <script>
-    // --- DATA ---
+    // --- DATA (ë‚´ìš©ì€ ë™ì¼) ---
     const slides = [
         {
-            title: "Executive Summary",
-            subtitle: "ÀüÃ¼ ¿ä¾à",
+            title: "ì „ì²´ ìš”ì•½ (Summary)",
+            subtitle: "ê²°í˜¼ë¶€í„° ì€í‡´ê¹Œì§€ í•µì‹¬ ëª©í‘œ",
             type: "list",
             content: [
-                { label: "°áÈ¥", text: "'27³â 2¿ù ¿¹½Ä / ±¤ÁÖ ÇÕ¸®Àû ¿şµù / À¯·´ Çã´Ï¹® (ÀÜ¿© ÃàÀÇ±İÀº ¾Æ³» °¡°Ô ÀÚ±İ)" },
-                { label: "ÁÖ°Å", text: "'27³â 1¿ù ÀÔÁÖ / ¿¡³ÊÁö¹ë¸® Ç³°æÃ¤ / ÀÔÁÖÃ»¼Ò ¹× ¹İ·Á°ß ÄÚÆÃ ÇÊ¼ö" },
-                { label: "ÀçÁ¤", text: "Ãâ»ê ÀüÈÄ 'ÀÌ¿øÈ­ °ü¸®' (Ãâ»ê ÈÄ »ıÈ°ºñ ¹× º¸Çè·á Áö¿ø °³½Ã)" },
-                { label: "ÀÚ»ê", text: "40´ë 10¾ï ¡æ 60´ë 50¾ï ´Ş¼º (ºñÁ¤±â ¼öÀÔ Àü¾× ÀçÅõÀÚ ¿øÄ¢)" },
-                { label: "»ıÈ°", text: "»óÈ£ Á¸Áß (°¡»ç ºĞ´ã, Á¾±³ ÀÚÀ¯, ¾Æ³»ÀÇ ½Ã°ñ ¹æ¹® ÀÏÁ¤ Á¸Áß)" }
+                { label: "ê²°í˜¼", text: "'27ë…„ 2ì›” ì˜ˆì‹ / ê´‘ì£¼ í•©ë¦¬ì  ì›¨ë”© / ìœ ëŸ½ í—ˆë‹ˆë¬¸ (ì”ì—¬ ì¶•ì˜ê¸ˆ ì•„ë‚´ ê°€ê²Œ ìê¸ˆ)" },
+                { label: "ì£¼ê±°", text: "'27ë…„ 1ì›” ì…ì£¼ / ì—ë„ˆì§€ë°¸ë¦¬ í’ê²½ì±„ / ì…ì£¼ì²­ì†Œ ë° ë°˜ë ¤ê²¬ ì½”íŒ… í•„ìˆ˜" },
+                { label: "ì¬ì •", text: "ì¶œì‚° ì „í›„ 'ì´ì›í™” ê´€ë¦¬' (ì¶œì‚° í›„ ìƒí™œë¹„ ë° ë³´í—˜ë£Œ ì§€ì› ê°œì‹œ)" },
+                { label: "ìì‚°", text: "40ëŒ€ 10ì–µ â†’ 60ëŒ€ 50ì–µ ë‹¬ì„± (ë¹„ì •ê¸° ìˆ˜ì… ì „ì•¡ ì¬íˆ¬ì ì›ì¹™)" },
+                { label: "ìƒí™œ", text: "ìƒí˜¸ ì¡´ì¤‘ (ê°€ì‚¬ ë¶„ë‹´, ì¢…êµ ììœ , ì•„ë‚´ì˜ ì‹œê³¨ ë°©ë¬¸ ì¼ì • ì¡´ì¤‘)" }
             ]
         },
         {
-            title: "Timeline",
-            subtitle: "ÀüÃ¼ ÀÏÁ¤ ('26.02 ~ '27.02)",
+            title: "ì „ì²´ ì¼ì • (Timeline)",
+            subtitle: "2026.02 ~ 2027.02 ì£¼ìš” ë§ˆì¼ìŠ¤í†¤",
             type: "table",
-            headers: ["½Ã±â", "±¸ºĞ", "ÁøÇà »çÇ×"],
+            headers: ["ì‹œê¸°", "êµ¬ë¶„", "ì§„í–‰ ì‚¬í•­"],
             content: [
-                ["'26.02", "ÀÏÁ¤ È®Á¤", "±æÀÏ ÅÃÀÏ (¾ç°¡ ÀÎ»ç »ı·«), Áï½Ã ¿¹½ÄÀå ¿¹¾à"],
-                ["'26.03", "Àå¼Ò ¿¹¾à", "±¤ÁÖ ÇÕ¸®Àû ¿¹½ÄÀå °è¾à (º¸ÁõÀÎ¿ø ÇùÀÇ)"],
-                ["'26.04", "ÃÔ¿µ ¿¹¾à", "½ºµå¸Ş(ÅäÅ»¼¥) ¹× º»½Ä ½º³À °è¾à"],
-                ["'26.10", "¿¹¹° Åõ¾î", "ÀÏº» ¿©Çà °â °áÈ¥¹İÁö(ºÒ°¡¸®) ¼ö·É"],
-                ["'26.11", "Åğ°Å Åëº¸", "¼¼ÀÔÀÚ ¸¸±â Åğ°Å Åëº¸ (³»¿ëÁõ¸í)"],
-                ["'27.01", "ÀÔÁÖ/È¥¼ö", "ÇÊ¼ö ½Ã°ø(ÄÚÆÃ, Ã»¼Ò) ¹× ÀÔÁÖ ¿Ï·á"],
-                ["'27.02", "º»½Ä/¿©Çà", "°áÈ¥½Ä ¹× À¯·´(ÀÌÅ»¸®¾Æ) ½ÅÈ¥¿©Çà"]
+                ["'26.02", "ì¼ì • í™•ì •", "ê¸¸ì¼ íƒì¼ (ì–‘ê°€ ì¸ì‚¬ ìƒëµ), ì¦‰ì‹œ ì˜ˆì‹ì¥ ì˜ˆì•½"],
+                ["'26.03", "ì¥ì†Œ ì˜ˆì•½", "ê´‘ì£¼ í•©ë¦¬ì  ì˜ˆì‹ì¥ ê³„ì•½ (ë³´ì¦ì¸ì› í˜‘ì˜)"],
+                ["'26.04", "ì´¬ì˜ ì˜ˆì•½", "ìŠ¤ë“œë©”(í† íƒˆìƒµ) ë° ë³¸ì‹ ìŠ¤ëƒ… ê³„ì•½"],
+                ["'26.10", "ì˜ˆë¬¼ íˆ¬ì–´", "ì¼ë³¸ ì—¬í–‰ ê²¸ ê²°í˜¼ë°˜ì§€(ë¶ˆê°€ë¦¬) ìˆ˜ë ¹"],
+                ["'26.11", "í‡´ê±° í†µë³´", "ì„¸ì…ì ë§Œê¸° í‡´ê±° í†µë³´ (ë‚´ìš©ì¦ëª…)"],
+                ["'27.01", "ì…ì£¼/í˜¼ìˆ˜", "í•„ìˆ˜ ì‹œê³µ(ì½”íŒ…, ì²­ì†Œ) ë° ì…ì£¼ ì™„ë£Œ"],
+                ["'27.02", "ë³¸ì‹/ì—¬í–‰", "ê²°í˜¼ì‹ ë° ìœ ëŸ½(ì´íƒˆë¦¬ì•„) ì‹ í˜¼ì—¬í–‰"]
             ]
         },
         {
-            title: "Wedding Venue",
-            subtitle: "¿¹½ÄÀå ¼±Á¤ (±¤ÁÖ ÇÕ¸®Àû º£´º Best 3)",
+            title: "ì˜ˆì‹ì¥ ì„ ì • (Venue)",
+            subtitle: "ê´‘ì£¼ í•©ë¦¬ì  ë² ë‰´ Best 3 (í•˜ê° 150ëª… ê¸°ì¤€)",
             type: "cards",
-            note: "¡Ø ¿¹½Ä ºñ¿ë Á¤»ê ÈÄ ³²´Â ÃàÀÇ±İÀº Àü¾× ¾Æ³»ÀÇ °¡°Ô ÀÚ±İÀ¸·Î È°¿ë",
+            note: "â€» ì˜ˆì‹ ë¹„ìš© ì •ì‚° í›„ ë‚¨ëŠ” ì¶•ì˜ê¸ˆì€ ì „ì•¡ ì•„ë‚´ì˜ ê°€ê²Œ ìê¸ˆìœ¼ë¡œ í™œìš©",
             content: [
-                { title: "1. ¾î¹İºê·è (³²±¸)", desc: "ÇÁ¶óÀÌºø/¾ß¿Ü. ½Ä»ç ¸¸Á·µµ ÃÖ»ó.", cost: "¾à 1,100¸¸" },
-                { title: "2. ½ÃÅ©¸´°¡µç (±¤»ê±¸)", desc: "ÇÏ¿ì½º/ÆÄÆ¼ ºĞÀ§±â. »çÁø ¿¬Ãâ ¿ì¼ö.", cost: "¾à 900¸¸" },
-                { title: "3. Á¦ÀÌ¾ÆÆ® (¼­±¸)", desc: "³ôÀº Ãş°í, ³ĞÀº ÁÖÂ÷Àå. Á¢±Ù¼º ¿ì¼ö.", cost: "¾à 850¸¸" }
+                { title: "1. ì–´ë°˜ë¸Œë£© (ë‚¨êµ¬)", desc: "í”„ë¼ì´ë¹—/ì•¼ì™¸. ì‹ì‚¬ ë§Œì¡±ë„ ìµœìƒ.", cost: "ì•½ 1,100ë§Œ" },
+                { title: "2. ì‹œí¬ë¦¿ê°€ë“  (ê´‘ì‚°êµ¬)", desc: "í•˜ìš°ìŠ¤/íŒŒí‹° ë¶„ìœ„ê¸°. ì‚¬ì§„ ì—°ì¶œ ìš°ìˆ˜.", cost: "ì•½ 900ë§Œ" },
+                { title: "3. ì œì´ì•„íŠ¸ (ì„œêµ¬)", desc: "ë†’ì€ ì¸µê³ , ë„“ì€ ì£¼ì°¨ì¥. ì ‘ê·¼ì„± ìš°ìˆ˜.", cost: "ì•½ 850ë§Œ" }
             ]
         },
         {
-            title: "S.D.M Strategy",
-            subtitle: "ÃÔ¿µ/ÀÇ»ó (ÅäÅ»¼¥ Àü·«)",
+            title: "ì´¬ì˜/ì˜ìƒ (S.D.M)",
+            subtitle: "í•©ë¦¬ì  í† íƒˆìƒµ ì „ëµ (í—¬í¼ë¹„ í¬í•¨)",
             type: "cards",
             content: [
-                { title: "1. ¸¶ÀÌµç", desc: "½ÉÇÃ/ÀÎ¹° Áß½É. ±ú²ıÇÏ°í ¸¼Àº ´À³¦. °¡¼ººñ 1¼øÀ§.", cost: "¾à 380¸¸" },
-                { title: "2. ÁÙ¸®¿§¹ßÄÚ´Ï", desc: "±×¸®³Ê¸®/ÀÚ¿¬±¤. È­»çÇÏ°í µû¶æÇÑ »ö°¨. ¾ß¿Ü ´À³¦.", cost: "¾à 340¸¸" },
-                { title: "3. ¿ø±Ô", desc: "´Ù¾çÇÑ ¹è°æ(ÇÑ¿Á/¾ØÆ½). È­º¸Çü. Ç¥Á¤ ¿¬±â º¸¿Ï.", cost: "¾à 410¸¸" }
+                { title: "1. ë§ˆì´ë“ ", desc: "ì‹¬í”Œ/ì¸ë¬¼ ì¤‘ì‹¬. ê¹¨ë—í•˜ê³  ë§‘ì€ ëŠë‚Œ. ê°€ì„±ë¹„ 1ìˆœìœ„.", cost: "ì•½ 380ë§Œ" },
+                { title: "2. ì¤„ë¦¬ì—£ë°œì½”ë‹ˆ", desc: "ê·¸ë¦¬ë„ˆë¦¬/ìì—°ê´‘. í™”ì‚¬í•˜ê³  ë”°ëœ»í•œ ìƒ‰ê°. ì•¼ì™¸ ëŠë‚Œ.", cost: "ì•½ 340ë§Œ" },
+                { title: "3. ì›ê·œ", desc: "ë‹¤ì–‘í•œ ë°°ê²½(í•œì˜¥/ì•¤í‹±). í™”ë³´í˜•. í‘œì • ì—°ê¸° ë³´ì™„.", cost: "ì•½ 410ë§Œ" }
             ]
         },
         {
-            title: "Housing & Living",
-            subtitle: "½ÅÈ¥Áı ½Ã°ø ¹× È¥¼ö (ÃÑ ¾à 980¸¸ ¿ø)",
+            title: "ì‹ í˜¼ì§‘ ì‹œê³µ ë° í˜¼ìˆ˜",
+            subtitle: "ì…ì£¼ ì¤€ë¹„ (ì´ ì•½ 980ë§Œ ì›)",
             type: "list",
             content: [
-                { label: "ÇÊ¼ö ½Ã°ø", text: "¸¶·ç ÄÚÆÃ(¹İ·Á°ß ¹Ì²ô·³¹æÁö 100¸¸), ÀÔÁÖ Ã»¼Ò(70¸¸), ºÎºĞ µµ¹è(60¸¸)" },
-                { label: "È¥¼ö (New)", text: "³ÃÀå°í (»ï¼º ºñ½ºÆ÷Å© / LG ¿ÀºêÁ¦ Å°Ä£ÇÍ) - 250¸¸" },
-                { label: "È¥¼ö (Used)", text: "TV(85ÀÎÄ¡), ¼¼Å¹Å¸¿ö, ½ÄÅ¹ µî S±Ş Áß°í È°¿ë - 500¸¸" }
+                { label: "í•„ìˆ˜ ì‹œê³µ", text: "ë§ˆë£¨ ì½”íŒ…(ë°˜ë ¤ê²¬ ë¯¸ë„ëŸ¼ë°©ì§€ 100ë§Œ), ì…ì£¼ ì²­ì†Œ(70ë§Œ), ë¶€ë¶„ ë„ë°°(60ë§Œ)" },
+                { label: "í˜¼ìˆ˜ (New)", text: "ëƒ‰ì¥ê³  (ì‚¼ì„± ë¹„ìŠ¤í¬í¬ / LG ì˜¤ë¸Œì œ í‚¤ì¹œí•) - 250ë§Œ" },
+                { label: "í˜¼ìˆ˜ (Used)", text: "TV(85ì¸ì¹˜), ì„¸íƒíƒ€ì›Œ, ì‹íƒ ë“± Sê¸‰ ì¤‘ê³  í™œìš© - 500ë§Œ" }
             ]
         },
         {
-            title: "Financial Plan",
-            subtitle: "ÀÚ³à °èÈ¹ ¹× ½Ã±âº° ÀçÁ¤ ¿î¿ë",
+            title: "ìë…€ ê³„íš ë° ì¬ì • ìš´ìš©",
+            subtitle: "ì¶œì‚° ì „í›„ ì´ì›í™” ê´€ë¦¬ ì‹œìŠ¤í…œ",
             type: "comparison",
-            leftTitle: "Phase 1: ½ÅÈ¥ ~ Ãâ»ê Àü",
-            leftData: ["ÁÖ°Å/½Äºñ: ³²Æí Àü¾× ºÎ´ã", "»ıÈ°ºñ: °¢ÀÚ ÇØ°á (Áö¿ø ¾øÀ½)", "º¸Çè·á: °¢ÀÚ ³³ºÎ"],
-            rightTitle: "Phase 2: Ãâ»ê ÈÄ ~ À°¾Æ±â",
-            rightData: ["ÁÖ°Å/½Äºñ: ³²Æí Àü¾× ºÎ´ã (À¯Áö)", "»ıÈ°ºñ: ¿ù 100~200¸¸ ¿ø Áö¿ø", "º¸Çè·á: ¾Æ³» º¸Çè·á ³²ÆíÀÌ ³³ºÎ"],
-            note: "°øÅë ¿øÄ¢: ¼º°ú±Ş µî ºñÁ¤±â ¼öÀÔÀº Àü¾× ÅõÀÚ Àû¸³ (»ç¿ë ½Ã ¿ø±İ º¹±¸)"
+            leftTitle: "Phase 1: ì‹ í˜¼ ~ ì¶œì‚° ì „",
+            leftData: ["ì£¼ê±°/ì‹ë¹„: ë‚¨í¸ ì „ì•¡ ë¶€ë‹´", "ìƒí™œë¹„: ê°ì í•´ê²° (ì§€ì› ì—†ìŒ)", "ë³´í—˜ë£Œ: ê°ì ë‚©ë¶€"],
+            rightTitle: "Phase 2: ì¶œì‚° í›„ ~ ìœ¡ì•„ê¸°",
+            rightData: ["ì£¼ê±°/ì‹ë¹„: ë‚¨í¸ ì „ì•¡ ë¶€ë‹´ (ìœ ì§€)", "ìƒí™œë¹„: ì›” 100~200ë§Œ ì› ì§€ì›", "ë³´í—˜ë£Œ: ì•„ë‚´ ë³´í—˜ë£Œ ë‚¨í¸ì´ ë‚©ë¶€"],
+            note: "âœ¨ ê³µí†µ ì›ì¹™: ì„±ê³¼ê¸‰ ë“± ë¹„ì •ê¸° ìˆ˜ì…ì€ ì „ì•¡ íˆ¬ì ì ë¦½ (ì‚¬ìš© ì‹œ ì›ê¸ˆ ë³µêµ¬)"
         },
         {
-            title: "Life Rules",
-            subtitle: "ºÎºÎ »ıÈ° ¼öÄ¢",
+            title: "ë¶€ë¶€ ìƒí™œ ìˆ˜ì¹™ (Rules)",
+            subtitle: "ìƒí˜¸ ì¡´ì¤‘ê³¼ ì—­í•  ë¶„ë‹´",
             type: "list",
             content: [
-                { label: "°¡»ç ºĞ´ã", text: "±¸¿ª °ü¸®Á¦ (Ã»¼Ò/»¡·¡), ½Ä»ç´Â Áı¹ä ¿øÄ¢ (¿Ü½Ä/¹è´Ş Á¦ÇÑ)" },
-                { label: "°¡Á· Çà»ç", text: "¸íÀı ¾ç°¡ ÀÎ»ç¸¸ µå¸®°í ±Í°¡ (¼÷¹Ú ¾øÀ½). ¾ç°¡ Áö¿ø µ¿ÀÏ ¿øÄ¢." },
-                { label: "°³ÀÎ »ıÈ°", text: "Á¾±³ °­¿ä ±İÁö. ÀÏ¿äÀÏ ¾Æ³»ÀÇ ½Ã°ñ ¹æ¹® Á¸Áß (Ãâ»ê ÈÄ¿£ ÀÚ³à µ¿¹İ)." }
+                { label: "ê°€ì‚¬ ë¶„ë‹´", text: "êµ¬ì—­ ê´€ë¦¬ì œ (ì²­ì†Œ/ë¹¨ë˜), ì‹ì‚¬ëŠ” ì§‘ë°¥ ì›ì¹™ (ì™¸ì‹/ë°°ë‹¬ ì œí•œ)" },
+                { label: "ê°€ì¡± í–‰ì‚¬", text: "ëª…ì ˆ ì–‘ê°€ ì¸ì‚¬ë§Œ ë“œë¦¬ê³  ê·€ê°€ (ìˆ™ë°• ì—†ìŒ). ì–‘ê°€ ì§€ì› ë™ì¼ ì›ì¹™." },
+                { label: "ê°œì¸ ìƒí™œ", text: "ì¢…êµ ê°•ìš” ê¸ˆì§€. ì¼ìš”ì¼ ì•„ë‚´ì˜ ì‹œê³¨ ë°©ë¬¸ ì¡´ì¤‘ (ì¶œì‚° í›„ì—” ìë…€ ë™ë°˜)." }
             ]
         },
         {
-            title: "Wealth Roadmap",
-            subtitle: "ÀÚ»ê Áõ½Ä (ÀºÅğ ½Ã ¼øÀÚ»ê 50¾ï ¸ñÇ¥)",
+            title: "ìì‚° ì¦ì‹ ë¡œë“œë§µ",
+            subtitle: "ì€í‡´ ì‹œ ìˆœìì‚° 50ì–µ ëª©í‘œ",
             type: "list",
             content: [
-                { label: "ÅõÀÚ ¿øÄ¢", text: "ºñÁ¤±â ¼öÀÔ Àü¾× Àû¸³. ÀÎÃâ ½Ã »ıÈ°ºñ Â÷°¨ÇÏ¿© ¿ø±İ º¹±¸ ÀÇ¹«." },
-                { label: "40´ë (10¾ï)", text: "Á¾Àãµ· ¸¶·Ã + °ÅÁÖ ¾ÆÆÄÆ® ¸Åµµ ÈÄ »ó±ŞÁö ÀÌµ¿" },
-                { label: "50´ë (30¾ï)", text: "ºÎµ¿»ê °¡Ä¡ »ó½Â + ÅõÀÚ ¼Òµæ º¹¸® È¿°ú" },
-                { label: "60´ë (50¾ï)", text: "ÀÚ»ê Æ÷Æ®Æú¸®¿À ´Ù°¢È­ ¹× ÀºÅğ (´ëÇü ¾Ö°ßÄ«Æä Ã¢¾÷)" }
+                { label: "íˆ¬ì ì›ì¹™", text: "ë¹„ì •ê¸° ìˆ˜ì… ì „ì•¡ ì ë¦½. ì¸ì¶œ ì‹œ ìƒí™œë¹„ ì°¨ê°í•˜ì—¬ ì›ê¸ˆ ë³µêµ¬ ì˜ë¬´." },
+                { label: "40ëŒ€ (10ì–µ)", text: "ì¢…ì£ëˆ ë§ˆë ¨ + ê±°ì£¼ ì•„íŒŒíŠ¸ ë§¤ë„ í›„ ìƒê¸‰ì§€ ì´ë™" },
+                { label: "50ëŒ€ (30ì–µ)", text: "ë¶€ë™ì‚° ê°€ì¹˜ ìƒìŠ¹ + íˆ¬ì ì†Œë“ ë³µë¦¬ íš¨ê³¼" },
+                { label: "60ëŒ€ (50ì–µ)", text: "ìì‚° í¬íŠ¸í´ë¦¬ì˜¤ ë‹¤ê°í™” ë° ì€í‡´ (ëŒ€í˜• ì• ê²¬ì¹´í˜ ì°½ì—…)" }
             ]
         },
         {
-            title: "Special Plan",
-            subtitle: "¿¹¹° ¹× Çã´Ï¹®",
+            title: "ì˜ˆë¬¼ ë° í—ˆë‹ˆë¬¸ (Special)",
+            subtitle: "ê°€ì¹˜ ì†Œë¹„ í”Œëœ",
             type: "list",
             content: [
-                { label: "¿¹¹° (ºÒ°¡¸®)", text: "'26³â 10¿ù ÀÏº» ¿©Çà ½Ã ±¸¸Å (¿£Àú/¸é¼¼ ÇıÅÃ È°¿ë)" },
-                { label: "Çã´Ï¹® (ÀÌÅ»¸®¾Æ)", text: "6¹Ú 7ÀÏ ·Î¸¶ & ÇÇ·»Ã¼ ÄÚ½º" },
-                { label: "¼îÇÎ Æ÷ÀÎÆ®", text: "ÇÇ·»Ã¼ Åä¸£³ªºÎ¿À´Ï °Å¸® (·çÀÌºñÅë, ¿¡¸£¸Ş½º µî)" }
+                { label: "ì˜ˆë¬¼ (ë¶ˆê°€ë¦¬)", text: "'26ë…„ 10ì›” ì¼ë³¸ ì—¬í–‰ ì‹œ êµ¬ë§¤ (ì—”ì €/ë©´ì„¸ í˜œíƒ í™œìš©)" },
+                { label: "í—ˆë‹ˆë¬¸ (ì´íƒˆë¦¬ì•„)", text: "6ë°• 7ì¼ ë¡œë§ˆ & í”¼ë Œì²´ ì½”ìŠ¤" },
+                { label: "ì‡¼í•‘ í¬ì¸íŠ¸", text: "í”¼ë Œì²´ í† ë¥´ë‚˜ë¶€ì˜¤ë‹ˆ ê±°ë¦¬ (ë£¨ì´ë¹„í†µ, ì—ë¥´ë©”ìŠ¤ ë“±)" }
             ]
         },
         {
-            title: "Final Budget",
-            subtitle: "ÃÖÁ¾ ¿¹»ó ¿¹»ê¾È (¾à 3,600¸¸ ¿ø)",
+            title: "ìµœì¢… ì˜ˆìƒ ì˜ˆì‚°ì•ˆ",
+            subtitle: "ìˆœìˆ˜ ì§€ì¶œ ë¹„ìš© (ì•½ 3,600ë§Œ ì›)",
             type: "table",
-            headers: ["±¸ºĞ", "Ç×¸ñ", "ºñ¿ë"],
+            headers: ["êµ¬ë¶„", "í•­ëª©", "ë¹„ìš©"],
             content: [
-                ["¿¹½ÄÀå", "¾î¹İºê·è µî", "900¸¸"],
-                ["½ºµå¸Ş", "¸¶ÀÌµç µî", "350¸¸"],
-                ["¿¹¹°", "ºÒ°¡¸®(ÀÏº»)", "400¸¸"],
-                ["½ÅÈ¥¿©Çà", "À¯·´(ÀÌÅ»¸®¾Æ)", "800¸¸"],
-                ["È¥¼ö", "New+Used", "750¸¸"],
-                ["¿¹ºñºñ", "½Ã°ø/¿¹º¹/Àâºñ", "400¸¸"]
+                ["ì˜ˆì‹ì¥", "ì–´ë°˜ë¸Œë£© ë“±", "900ë§Œ"],
+                ["ìŠ¤ë“œë©”", "ë§ˆì´ë“  ë“±", "350ë§Œ"],
+                ["ì˜ˆë¬¼", "ë¶ˆê°€ë¦¬(ì¼ë³¸)", "400ë§Œ"],
+                ["ì‹ í˜¼ì—¬í–‰", "ìœ ëŸ½(ì´íƒˆë¦¬ì•„)", "800ë§Œ"],
+                ["í˜¼ìˆ˜", "New+Used", "750ë§Œ"],
+                ["ì˜ˆë¹„ë¹„", "ì‹œê³µ/ì˜ˆë³µ/ì¡ë¹„", "400ë§Œ"]
             ]
         }
     ];
@@ -371,9 +504,9 @@
     let currentSlide = 0;
     let checkedState = new Array(slides.length).fill(false);
 
-    // Initialize
     window.onload = function() {
-        const savedChecks = localStorage.getItem("weddingChecklist_v2");
+        // ë¡œì»¬ ìŠ¤í† ë¦¬ì§€ í‚¤ ë³€ê²½ (ìƒˆë¡œìš´ ë””ìì¸ ì ìš©ì„ ìœ„í•´)
+        const savedChecks = localStorage.getItem("weddingChecklist_pink_v1");
         if (savedChecks) {
             checkedState = JSON.parse(savedChecks);
         }
@@ -383,23 +516,19 @@
     function renderSlide() {
         const slide = slides[currentSlide];
         
-        // Update Header Info
         document.getElementById("progressBar").style.width = `${((currentSlide + 1) / slides.length) * 100}%`;
         document.getElementById("pageIndicator").innerText = `${currentSlide + 1} / ${slides.length}`;
-        
-        // Update Title
         document.getElementById("slideTitle").innerText = slide.title;
         document.getElementById("slideSubtitle").innerText = slide.subtitle;
 
-        // Render Content Based on Type
         const contentArea = document.getElementById("contentArea");
-        contentArea.innerHTML = ""; // Clear previous content
+        contentArea.innerHTML = "";
 
         if (slide.type === "list") {
             const ul = document.createElement("ul");
             slide.content.forEach(item => {
                 const li = document.createElement("li");
-                li.innerHTML = `<strong>${item.label}:</strong> ${item.text}`;
+                li.innerHTML = `<strong>${item.label}</strong><br>${item.text}`;
                 ul.appendChild(li);
             });
             contentArea.appendChild(ul);
@@ -467,42 +596,35 @@
             contentArea.appendChild(note);
         }
 
-        // Update Checkbox State
+        updateCheckboxUI();
+
+        document.getElementById("prevBtn").disabled = currentSlide === 0;
+        document.getElementById("nextBtn").innerText = currentSlide === slides.length - 1 ? "ì™„ë£Œ ğŸ¥°" : "ë‹¤ìŒ";
+    }
+
+    function updateCheckboxUI() {
         const checkBtnLabel = document.getElementById("checkBtnLabel");
         const checkbox = document.getElementById("slideCheckbox");
         const checkText = document.getElementById("checkText");
+        const checkIcon = document.getElementById("checkIcon");
 
         checkbox.checked = checkedState[currentSlide];
         if (checkedState[currentSlide]) {
             checkBtnLabel.classList.add("checked");
-            checkText.innerText = "? È®ÀÎ ¿Ï·á";
+            checkText.innerText = "í™•ì¸ ì™„ë£Œ!";
+            checkIcon.innerText = "âœ…";
         } else {
             checkBtnLabel.classList.remove("checked");
-            checkText.innerText = "? À§ ³»¿ëÀ» È®ÀÎÇÏ¿´½À´Ï´Ù";
+            checkText.innerText = "í™•ì¸í–ˆìŠµë‹ˆë‹¤";
+            checkIcon.innerText = "â¬œ";
         }
-
-        // Update Button States
-        document.getElementById("prevBtn").disabled = currentSlide === 0;
-        document.getElementById("nextBtn").innerText = currentSlide === slides.length - 1 ? "¿Ï·á" : "´ÙÀ½";
     }
 
-    // Checkbox Event Listener
     document.getElementById("slideCheckbox").addEventListener("change", function() {
         const isChecked = this.checked;
         checkedState[currentSlide] = isChecked;
-        
-        const checkBtnLabel = document.getElementById("checkBtnLabel");
-        const checkText = document.getElementById("checkText");
-
-        if (isChecked) {
-            checkBtnLabel.classList.add("checked");
-            checkText.innerText = "? È®ÀÎ ¿Ï·á";
-        } else {
-            checkBtnLabel.classList.remove("checked");
-            checkText.innerText = "? À§ ³»¿ëÀ» È®ÀÎÇÏ¿´½À´Ï´Ù";
-        }
-
-        localStorage.setItem("weddingChecklist_v2", JSON.stringify(checkedState));
+        updateCheckboxUI();
+        localStorage.setItem("weddingChecklist_pink_v1", JSON.stringify(checkedState));
     });
 
     function changeSlide(direction) {
